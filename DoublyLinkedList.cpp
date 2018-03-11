@@ -212,7 +212,7 @@ DoublyLinkedList DoublyLinkedList::operator+(const DoublyLinkedList& lis){
     return outputList;
 
 }
-//nie dzia³a
+
 DoublyLinkedList DoublyLinkedList::operator-(const DoublyLinkedList& lis){
     DoublyLinkedList outputList;
 
