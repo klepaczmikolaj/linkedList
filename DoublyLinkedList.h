@@ -14,25 +14,32 @@ class DoublyLinkedList{
     public:
     NodePointer head, tail;
     DoublyLinkedList();
+
+    //add
     void addNodeStart(int);
     void addNodeEnd(int);
     void addNodeAfter(NodePointer, int);
     void addNodeAfter(int, int);
 
+    //delete
     void deleteElement(NodePointer);
     void deleteElementIndex(int);
     void deleteElementValue(int);
     void deleteElementScope(int, int);
     void removeDuplicates();
 
-    NodePointer getElementByIndex(int);
-    NodePointer getFirstElementByValue(int);
-    int getNumberOfElements();
+    //get
+    NodePointer getElementByIndex(int) const;
+    NodePointer getFirstElementByValue(int) const;
+    int getNumberOfElements() const;
     void printList();
 
     //operators
     DoublyLinkedList operator+(const DoublyLinkedList& lis);
     DoublyLinkedList operator-(const DoublyLinkedList& lis);
+    bool operator==(const DoublyLinkedList& lis);
+    DoublyLinkedList& operator=(const DoublyLinkedList& lis);
+    DoublyLinkedList(const DoublyLinkedList& lis);
 
     private:
     void increaseIndexesAfterNode(NodePointer);
