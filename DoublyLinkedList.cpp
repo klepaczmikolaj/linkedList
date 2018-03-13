@@ -1,3 +1,13 @@
+/*
+* Klasa realizująca dwukierunkową listę przechowującą liczby całkowite.
+* Umożliwia wykonywanie szereg działań na obiekcie, np. dodawanie, usuwanie elementów, dodawanie, odejmowanie list
+* oraz dostarcza operatory dodawania, porównywania czy kopiowania obiektów.
+*
+* @author Mikołaj Klepacz
+* 
+* Plik implementacyjny dla klasy DoublyLinkedList
+*/
+
 #include <iostream>
 #include "DoublyLinkedList.h"
 
@@ -163,7 +173,7 @@ void DoublyLinkedList:: removeDuplicates(){
 
 }
 
-NodePointer DoublyLinkedList::getElementByIndex(int specifiedNodeIndex){
+NodePointer DoublyLinkedList::getElementByIndex(int specifiedNodeIndex) const{
     for(NodePointer temp = head; temp != NULL; temp = temp->next)
         if(temp->elementIndex == specifiedNodeIndex)
             return temp;
@@ -171,7 +181,7 @@ NodePointer DoublyLinkedList::getElementByIndex(int specifiedNodeIndex){
     return NULL;
 }
 
-NodePointer DoublyLinkedList::getFirstElementByValue(int value){
+NodePointer DoublyLinkedList::getFirstElementByValue(int value) const{
     for(NodePointer temp = head; temp != NULL; temp = temp->next)
         if(temp->data == value)
             return temp;
@@ -179,7 +189,7 @@ NodePointer DoublyLinkedList::getFirstElementByValue(int value){
     return NULL;
 }
 
-int DoublyLinkedList::getNumberOfElements(){
+int DoublyLinkedList::getNumberOfElements() const{
     int sizeCounter = 0;
     NodePointer temp = head;
     while(temp != NULL){
@@ -229,6 +239,35 @@ DoublyLinkedList DoublyLinkedList::operator-(const DoublyLinkedList& lis){
     return outputList;
 }
 
+bool DoublyLinkedList::operator==(const DoublyLinkedList& lis){
 
+    if(this->getNumberOfElements() != lis.getNumberOfElements())
+        return false;
 
+    for(NodePointer temp = this->head; temp != NULL; temp = temp->next){
+        int currentIndex = temp->elementIndex;
+        NodePointer firstToCompare = this->getElementByIndex(currentIndex);
+        NodePointer secondToCompare = lis.getElementByIndex(currentIndex);
 
+        if(firstToCompare->data != secondToCompare->data)
+            return false;
+    }
+    return true;
+}
+//copy constructor
+DoublyLinkedList::DoublyLinkedList(const DoublyLinkedList& lis){
+    head = lis.head;
+    tail = lis.tail;
+
+}
+
+DoublyLinkedList& DoublyLinkedList::operator=(const DoublyLinkedList& lis){
+    if(&lis == this){
+        return *this;
+    }
+    head = lis.head;
+    tail = lis.tail;
+
+    return *this;
+
+}
