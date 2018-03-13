@@ -1,3 +1,12 @@
+/*
+* Klasa realizująca dwukierunkową listę przechowującą liczby całkowite.
+* Umożliwia wykonywanie szereg działań na obiekcie, np. dodawanie, usuwanie elementów, dodawanie, odejmowanie list
+* oraz operatory dodawania, porównywania czy kopiowania obiektu
+*
+* @author Mikołaj Klepacz
+* 
+* Plik nagłówkowy dla klasy DoublyLinkedList
+*/
 using std::cout;
 using std::endl;
 
