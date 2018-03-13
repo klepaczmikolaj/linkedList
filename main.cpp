@@ -23,16 +23,19 @@ int main()
 
     secondList.printList();
 
+
     DoublyLinkedList sumList;
 
 
-    sumList = myList + secondList;
+    sumList = (myList + secondList);
 
     sumList.printList();
     cout << "el numbers: " << sumList.getNumberOfElements() << endl;
 
-    sumList = sumList - secondList;
+    sumList = (sumList - secondList);
     sumList.printList();
+
+
 
     return 0;
 }
