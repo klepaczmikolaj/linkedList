@@ -4,7 +4,7 @@
 * oraz dostarcza operatory dodawania, porównywania czy kopiowania obiektów.
 *
 * @author Mikołaj Klepacz
-* 
+*
 * Plik implementacyjny dla klasy DoublyLinkedList
 */
 
@@ -74,8 +74,7 @@ void DoublyLinkedList::addNodeAfter(NodePointer specifiedNode, int inputData){
 }
 
 void DoublyLinkedList::addNodeAfter(int specifiedNodeIndex, int inputData){
-    NodePointer temp = new Node();
-    for(temp = head; temp != NULL; temp = temp->next)
+    for(NodePointer temp = head; temp != NULL; temp = temp->next)
         if(temp->elementIndex == specifiedNodeIndex){
             addNodeAfter(temp,inputData);
             return;
@@ -149,7 +148,7 @@ void DoublyLinkedList::deleteElementScope(int startValue, int endValue){
             deleteElement(temp);
 }
 
-void DoublyLinkedList:: removeDuplicates(){
+void DoublyLinkedList::removeDuplicates(){
     if(head == NULL)
         return;
 
@@ -157,20 +156,16 @@ void DoublyLinkedList:: removeDuplicates(){
     NodePointer iter;
 
     while(temp->next != NULL){
-        iter = temp->next;
-        while(iter != NULL){
+        for(iter = temp->next; iter != NULL; iter = iter->next)
             if(temp->data == iter->data){
                 iter = iter->previous;
                 deleteElement(iter->next);
             }
-            iter = iter->next;
-        }
         temp = temp->next;
 
         if(temp == NULL)
             break;
     }
-
 }
 
 NodePointer DoublyLinkedList::getElementByIndex(int specifiedNodeIndex) const{
@@ -208,6 +203,14 @@ void DoublyLinkedList::printList(){
         cout << "index: " << temp->elementIndex << "   stored number: " << temp->data << endl;
     }
     cout << endl;
+}
+//TODO
+DoublyLinkedList::DoublyLinkedList(const DoublyLinkedList& lis){
+    if(lis.head == NULL)
+        return;
+
+    for(NodePointer temp = lis.head; temp != NULL; temp = temp->next)
+        this->addNodeEnd(temp->data);
 }
 
 DoublyLinkedList DoublyLinkedList::operator+(const DoublyLinkedList& lis){
@@ -254,19 +257,14 @@ bool DoublyLinkedList::operator==(const DoublyLinkedList& lis){
     }
     return true;
 }
-//copy constructor
-DoublyLinkedList::DoublyLinkedList(const DoublyLinkedList& lis){
-    head = lis.head;
-    tail = lis.tail;
-
-}
-
+//TODO
 DoublyLinkedList& DoublyLinkedList::operator=(const DoublyLinkedList& lis){
     if(&lis == this){
         return *this;
     }
-    head = lis.head;
-    tail = lis.tail;
+
+    for(NodePointer temp = lis.head; temp != NULL; temp = temp->next)
+        this->addNodeEnd(temp->data);
 
     return *this;
 
