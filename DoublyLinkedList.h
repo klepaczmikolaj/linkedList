@@ -4,7 +4,7 @@
 * oraz operatory dodawania, porównywania czy kopiowania obiektu
 *
 * @author Mikołaj Klepacz
-* 
+*
 * Plik nagłówkowy dla klasy DoublyLinkedList
 */
 using std::cout;
@@ -23,6 +23,7 @@ class DoublyLinkedList{
     public:
     NodePointer head, tail;
     DoublyLinkedList();
+    DoublyLinkedList(const DoublyLinkedList& lis);
 
     //add
     void addNodeStart(int);
@@ -44,11 +45,11 @@ class DoublyLinkedList{
     void printList();
 
     //operators
+    // operatory takie jak: +=, -=, []-getElementByIndex
     DoublyLinkedList operator+(const DoublyLinkedList& lis);
     DoublyLinkedList operator-(const DoublyLinkedList& lis);
     bool operator==(const DoublyLinkedList& lis);
     DoublyLinkedList& operator=(const DoublyLinkedList& lis);
-    DoublyLinkedList(const DoublyLinkedList& lis);
 
     private:
     void increaseIndexesAfterNode(NodePointer);
