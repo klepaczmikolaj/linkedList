@@ -9,58 +9,50 @@
 
 #include <iostream>
 #include "DoublyLinkedList.h"
+#include "Tests.h"
 
-bool testAdd() {
-    DoublyLinkedList A;
-    A.addNodeStart(5);
-    A.addNodeStart(1);
-
-    return A.getFirstElementByValue(5) && A.getFirstElementByValue(1);
-}
-//Todo: test: all ADD, all DELETE, operator == + =(najlepiej wszystkie), copy constructor
 
 int main()
 {
 
-    if (!testAdd()) std::cout << "Error in testAdd";
-    DoublyLinkedList A;
-    A.addNodeStart(5);
-    A.addNodeStart(5);
-    A.addNodeStart(5);
-    A.addNodeStart(1);
-    A.addNodeStart(1);
-    A.addNodeEnd(1);
-    A.addNodeEnd(6);
+    if (!testAddStart()) std::cout << "Error in testAddStart" << endl;
+    else cout << "testAddStart passed" << endl;
 
-    NodePointer D = A.getFirstElementByValue(5);
+    if (!testAddEnd()) std::cout << "Error in testAddEnd" << endl;
+    else cout << "testAddEnd passed" << endl;
 
-    A.printList();
-    cout << D->elementIndex << endl;
+    if (!testAddNodeAfter()) std::cout << "Error in testAddNodeAfter" << endl;
+    else cout << "testAddNodeAfter passed" << endl;
 
-    DoublyLinkedList B;
-    B.addNodeStart(10);
-    B.addNodeStart(12);
-    B.addNodeStart(10);
+    if (!testAddNodeAfter()) std::cout << "Error in testAddNodeAfter" << endl;
+    else cout << "testAddNodeAfter passed" << endl;
 
-    B.printList();
+    if (!testDeleteElement()) std::cout << "Error in testDeleteElement" << endl;
+    else cout << "testDeleteElement passed" << endl;
 
+    if (!testDeleteElementValue()) std::cout << "Error in testDeleteElementValue" << endl;
+    else cout << "testDeleteElementValue passed" << endl;
 
-    DoublyLinkedList C;
+    if (!testDeleteElementScope()) std::cout << "Error in testDeleteElementScope" << endl;
+    else cout << "testDeleteElementScope passed" << endl;
 
+    if (!testEqualToOperator()) std::cout << "Error in testEqualToOperator" << endl;
+    else cout << "testEqualToOperator passed" << endl;
 
-    C = B;
+    if (!testPlusOperator()) std::cout << "Error in testPlusOperator" << endl;
+    else cout << "testPlusOperator passed" << endl;
 
-    C.addNodeStart(10);
-    B.addNodeStart(25);
+    if (!testMinusOperator()) std::cout << "Error in testMinusOperator" << endl;
+    else cout << "testMinusOperator passed" << endl;
 
-    B.printList();
-    C.printList();
+    if (!testCopyConstructor()) std::cout << "Error in testCopyConstructor" << endl;
+    else cout << "testCopyConstructor passed" << endl;
 
-    DoublyLinkedList lista;
-    lista = C;
+    if (!testAssignmentOperator()) std::cout << "Error in testAssignmentOperator" << endl;
+    else cout << "testAssignmentOperator passed" << endl;
 
-
-
+    if (!testGetElementOperator()) std::cout << "Error in testGetElementOperator" << endl;
+    else cout << "testGetElementOperator passed" << endl;
 
     return 0;
 }

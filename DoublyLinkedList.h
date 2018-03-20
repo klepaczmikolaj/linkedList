@@ -30,6 +30,7 @@ class DoublyLinkedList{
     void addNodeEnd(int);
     void addNodeAfter(NodePointer, int);
     void addNodeAfter(int, int);
+    void setData(int, int);
 
     //delete
     void deleteElement(NodePointer);
@@ -45,11 +46,14 @@ class DoublyLinkedList{
     void printList();
 
     //operators
-    // operatory takie jak: +=, -=, []-getElementByIndex
     DoublyLinkedList operator+(const DoublyLinkedList& lis);
     DoublyLinkedList operator-(const DoublyLinkedList& lis);
     bool operator==(const DoublyLinkedList& lis);
+   /* ~DoublyLinkedList();*/
     DoublyLinkedList& operator=(const DoublyLinkedList& lis);
+    DoublyLinkedList& operator+=(const DoublyLinkedList& lis);
+    DoublyLinkedList& operator-=(const DoublyLinkedList& lis);
+    NodePointer operator[](const int& index);
 
     private:
     void increaseIndexesAfterNode(NodePointer);
