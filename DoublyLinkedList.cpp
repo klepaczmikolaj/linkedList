@@ -16,6 +16,22 @@ DoublyLinkedList::DoublyLinkedList(){
     tail = NULL;
 }
 
+DoublyLinkedList::DoublyLinkedList(const DoublyLinkedList& lis){
+    head = NULL;
+    tail = NULL;
+
+    for(NodePointer temp = lis.head; temp != NULL; temp = temp->next)
+        this->addNodeEnd(temp->data);
+}
+
+DoublyLinkedList::~DoublyLinkedList(){
+    for(NodePointer temp = this->head; temp != NULL;){
+        NodePointer next = temp->next;
+        delete temp;
+        temp = next;
+    }
+}
+
 void DoublyLinkedList::addNodeStart(int inputData){
     NodePointer newNode = new Node();
     newNode->data = inputData;
@@ -143,15 +159,21 @@ void DoublyLinkedList::deleteElementIndex(int specifiedNodeIndex){
 }
 
 void DoublyLinkedList::deleteElementValue(int value){
-    for(NodePointer temp = head; temp != NULL; temp = temp->next)
+    for(NodePointer temp = head; temp != NULL; ){
+        NodePointer next = temp->next;
         if(temp->data == value)
             deleteElement(temp);
+        temp = next;
+    }
 }
 
 void DoublyLinkedList::deleteElementScope(int startValue, int endValue){
-    for(NodePointer temp = head; temp != NULL; temp = temp->next)
+    for(NodePointer temp = head; temp != NULL; temp = temp->next){
+        NodePointer next = temp->next;
         if(temp->data >= startValue && temp->data <= endValue)
             deleteElement(temp);
+        temp = next;
+    }
 }
 
 void DoublyLinkedList::removeDuplicates(){
@@ -209,14 +231,6 @@ void DoublyLinkedList::printList(){
         cout << "index: " << temp->elementIndex << "   stored number: " << temp->data << endl;
     }
     cout << endl;
-}
-
-DoublyLinkedList::DoublyLinkedList(const DoublyLinkedList& lis){
-    if(lis.head == NULL)
-        return;
-
-    for(NodePointer temp = lis.head; temp != NULL; temp = temp->next)
-        this->addNodeEnd(temp->data);
 }
 
 DoublyLinkedList DoublyLinkedList::operator+(const DoublyLinkedList& lis){
@@ -280,11 +294,6 @@ DoublyLinkedList& DoublyLinkedList::operator=(const DoublyLinkedList& lis){
 
     return *this;
 }
-
-/*DoublyLinkedList::~DoublyLinkedList(){
-    for(NodePointer temp = this->head; temp != NULL; temp = temp->next)
-        deleteElement(temp);
-}*/
 
 DoublyLinkedList& DoublyLinkedList::operator+=(const DoublyLinkedList& lis){
     for(NodePointer temp = lis.head; temp != NULL; temp = temp->next)

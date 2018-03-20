@@ -24,6 +24,7 @@ class DoublyLinkedList{
     NodePointer head, tail;
     DoublyLinkedList();
     DoublyLinkedList(const DoublyLinkedList& lis);
+    ~DoublyLinkedList();
 
     //add
     void addNodeStart(int);
@@ -49,7 +50,6 @@ class DoublyLinkedList{
     DoublyLinkedList operator+(const DoublyLinkedList& lis);
     DoublyLinkedList operator-(const DoublyLinkedList& lis);
     bool operator==(const DoublyLinkedList& lis);
-   /* ~DoublyLinkedList();*/
     DoublyLinkedList& operator=(const DoublyLinkedList& lis);
     DoublyLinkedList& operator+=(const DoublyLinkedList& lis);
     DoublyLinkedList& operator-=(const DoublyLinkedList& lis);
