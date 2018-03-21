@@ -1,41 +1,58 @@
+/*
+* Klasa realizująca dwukierunkową listę przechowującą liczby całkowite.
+* Umożliwia wykonywanie szereg działań na obiekcie, np. dodawanie, usuwanie elementów, dodawanie, odejmowanie list
+* oraz dostarcza operatory dodawania, porównywania czy kopiowania obiektów.
+*
+* @author Mikołaj Klepacz
+*
+*/
+
 #include <iostream>
 #include "DoublyLinkedList.h"
-
+#include "Tests.h"
 
 
 int main()
 {
-    DoublyLinkedList myList;
-    myList.addNodeStart(5);
-    myList.addNodeStart(5);
-    myList.addNodeStart(5);
-    myList.addNodeStart(1);
-    myList.addNodeStart(1);
-    myList.addNodeEnd(1);
 
+    if (!testAddStart()) std::cout << "Error in testAddStart" << endl;
+    else cout << "testAddStart passed" << endl;
 
-    myList.printList();
+    if (!testAddEnd()) std::cout << "Error in testAddEnd" << endl;
+    else cout << "testAddEnd passed" << endl;
 
-    DoublyLinkedList secondList;
-    secondList.addNodeStart(10);
-    secondList.addNodeStart(12);
-    secondList.addNodeStart(10);
+    if (!testAddNodeAfter()) std::cout << "Error in testAddNodeAfter" << endl;
+    else cout << "testAddNodeAfter passed" << endl;
 
-    secondList.printList();
+    if (!testAddNodeAfter()) std::cout << "Error in testAddNodeAfter" << endl;
+    else cout << "testAddNodeAfter passed" << endl;
 
+    if (!testDeleteElement()) std::cout << "Error in testDeleteElement" << endl;
+    else cout << "testDeleteElement passed" << endl;
 
-    DoublyLinkedList sumList;
+    if (!testDeleteElementValue()) std::cout << "Error in testDeleteElementValue" << endl;
+    else cout << "testDeleteElementValue passed" << endl;
 
+    if (!testDeleteElementScope()) std::cout << "Error in testDeleteElementScope" << endl;
+    else cout << "testDeleteElementScope passed" << endl;
 
-    sumList = (myList + secondList);
+    if (!testEqualToOperator()) std::cout << "Error in testEqualToOperator" << endl;
+    else cout << "testEqualToOperator passed" << endl;
 
-    sumList.printList();
-    cout << "el numbers: " << sumList.getNumberOfElements() << endl;
+    if (!testPlusOperator()) std::cout << "Error in testPlusOperator" << endl;
+    else cout << "testPlusOperator passed" << endl;
 
-    sumList = (sumList - secondList);
-    sumList.printList();
+    if (!testMinusOperator()) std::cout << "Error in testMinusOperator" << endl;
+    else cout << "testMinusOperator passed" << endl;
 
+    if (!testCopyConstructor()) std::cout << "Error in testCopyConstructor" << endl;
+    else cout << "testCopyConstructor passed" << endl;
 
+    if (!testAssignmentOperator()) std::cout << "Error in testAssignmentOperator" << endl;
+    else cout << "testAssignmentOperator passed" << endl;
+
+    if (!testGetElementOperator()) std::cout << "Error in testGetElementOperator" << endl;
+    else cout << "testGetElementOperator passed" << endl;
 
     return 0;
 }
