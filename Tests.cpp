@@ -1,9 +1,9 @@
 /*
-* Klasa realizuj¹ca dwukierunkow¹ listê przechowuj¹c¹ liczby ca³kowite.
-* Umo¿liwia wykonywanie szereg dzia³añ na obiekcie, np. dodawanie, usuwanie elementów, dodawanie, odejmowanie list
-* oraz operatory dodawania, porównywania czy kopiowania obiektu
+* Klasa realizujÂ¹ca dwukierunkowÂ¹ listÃª przechowujÂ¹cÂ¹ liczby caÂ³kowite.
+* UmoÂ¿liwia wykonywanie szereg dziaÂ³aÃ± na obiekcie, np. dodawanie, usuwanie elementÃ³w, dodawanie, odejmowanie list
+* oraz operatory dodawania, porÃ³wnywania czy kopiowania obiektu
 *
-* @author Miko³aj Klepacz
+* @author MikoÂ³aj Klepacz
 *
 * Plik implementacyjny pliku testowego
 */
@@ -133,6 +133,7 @@ bool testMinusOperator(){
 
 bool testCopyConstructor(){
     DoublyLinkedList A;
+    bool output;
     A.addNodeEnd(3);
     A.addNodeEnd(2);
     A.addNodeEnd(9);
@@ -141,8 +142,11 @@ bool testCopyConstructor(){
 
     B->setData(1,30);
 
-    return A.getElementByIndex(0)->data == B->getElementByIndex(0)->data && A.getElementByIndex(1)->data == 2 &&
+    output = A.getElementByIndex(0)->data == B->getElementByIndex(0)->data && A.getElementByIndex(1)->data == 2 &&
         B->getElementByIndex(1)->data == 30 && A.getElementByIndex(2)->data == B->getElementByIndex(2)->data;
+
+    delete B;
+    return output;
 }
 
 bool testAssignmentOperator(){
